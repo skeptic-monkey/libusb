@@ -1122,7 +1122,7 @@ static enum libusb_error process_new_device (struct libusb_context *ctx, struct 
       priv = usbi_get_device_priv(dev);
     }
 
-    static_assert(sizeof(dev->device_descriptor) == sizeof(cached_device->dev_descriptor),
+    _Static_assert(sizeof(dev->device_descriptor) == sizeof(cached_device->dev_descriptor),
                   "mismatch between libusb and IOKit device descriptor sizes");
     memcpy(&dev->device_descriptor, &cached_device->dev_descriptor, LIBUSB_DT_DEVICE_SIZE);
     usbi_localize_device_descriptor(&dev->device_descriptor);

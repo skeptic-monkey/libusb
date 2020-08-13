@@ -286,7 +286,7 @@ static void usbdk_device_init(struct libusb_device *dev, PUSB_DK_DEVICE_INFO inf
 	// Addresses in libusb are 1-based
 	dev->device_address = (uint8_t)(info->Port + 1);
 
-	static_assert(sizeof(dev->device_descriptor) == sizeof(info->DeviceDescriptor),
+	_Static_assert(sizeof(dev->device_descriptor) == sizeof(info->DeviceDescriptor),
 		      "mismatch between libusb and OS device descriptor sizes");
 	memcpy(&dev->device_descriptor, &info->DeviceDescriptor, LIBUSB_DT_DEVICE_SIZE);
 	usbi_localize_device_descriptor(&dev->device_descriptor);

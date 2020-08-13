@@ -2671,7 +2671,7 @@ const struct libusb_pollfd ** LIBUSB_CALL libusb_get_pollfds(
 	struct usbi_event_source *ievent_source;
 	size_t i;
 
-	static_assert(sizeof(struct usbi_event_source_data) == sizeof(struct libusb_pollfd),
+	_Static_assert(sizeof(struct usbi_event_source_data) == sizeof(struct libusb_pollfd),
 		      "mismatch between usbi_event_source_data and libusb_pollfd sizes");
 
 	ctx = usbi_get_context(ctx);

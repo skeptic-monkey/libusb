@@ -498,7 +498,7 @@ int API_EXPORTED libusb_get_device_descriptor(libusb_device *dev,
 	struct libusb_device_descriptor *desc)
 {
 	usbi_dbg(" ");
-	static_assert(sizeof(dev->device_descriptor) == LIBUSB_DT_DEVICE_SIZE,
+	_Static_assert(sizeof(dev->device_descriptor) == LIBUSB_DT_DEVICE_SIZE,
 		      "struct libusb_device_descriptor is not expected size");
 	*desc = dev->device_descriptor;
 	return 0;

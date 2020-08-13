@@ -40,7 +40,7 @@
  * Additionally, Visual Studio treats static_assert as a keyword.
  */
 #if !defined(__cplusplus) && !defined(static_assert) && !defined(_MSC_VER)
-#define static_assert(cond, msg) _Static_assert(cond, msg)
+#define _Static_assert(cond, msg) _Static_assert(cond, msg)
 #endif
 
 #define container_of(ptr, type, member) \

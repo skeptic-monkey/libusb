@@ -868,7 +868,7 @@ static int init_device(struct libusb_device *dev, struct libusb_device *parent_d
 				return LIBUSB_ERROR_NO_DEVICE;
 			}
 
-			static_assert(sizeof(dev->device_descriptor) == sizeof(conn_info.DeviceDescriptor),
+			_Static_assert(sizeof(dev->device_descriptor) == sizeof(conn_info.DeviceDescriptor),
 				      "mismatch between libusb and OS device descriptor sizes");
 			memcpy(&dev->device_descriptor, &conn_info.DeviceDescriptor, LIBUSB_DT_DEVICE_SIZE);
 			usbi_localize_device_descriptor(&dev->device_descriptor);

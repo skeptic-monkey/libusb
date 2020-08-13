@@ -159,7 +159,7 @@ netbsd_get_device_list(struct libusb_context * ctx,
 				goto error;
 			}
 
-			static_assert(sizeof(dev->device_descriptor) == sizeof(ddesc),
+			_Static_assert(sizeof(dev->device_descriptor) == sizeof(ddesc),
 				      "mismatch between libusb and OS device descriptor sizes");
 			memcpy(&dev->device_descriptor, &ddesc, LIBUSB_DT_DEVICE_SIZE);
 			usbi_localize_device_descriptor(&dev->device_descriptor);

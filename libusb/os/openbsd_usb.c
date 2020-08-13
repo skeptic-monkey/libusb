@@ -186,7 +186,7 @@ obsd_get_device_list(struct libusb_context * ctx,
 					continue;
 				}
 
-				static_assert(sizeof(dev->device_descriptor) == sizeof(dd.udd_desc),
+				_Static_assert(sizeof(dev->device_descriptor) == sizeof(dd.udd_desc),
 					      "mismatch between libusb and OS device descriptor sizes");
 				memcpy(&dev->device_descriptor, &dd.udd_desc, LIBUSB_DT_DEVICE_SIZE);
 				usbi_localize_device_descriptor(&dev->device_descriptor);
